@@ -5,7 +5,6 @@ import numpy as np
 import altair as alt
 
 import joblib
-
 pipe_lr = joblib.load(open("model/text_emotion.pkl", "rb"))
 
 emotions_emoji_dict = {"anger": "😠", "disgust": "🤮", "fear": "😨😱", "happy": "🤗", "joy": "😂", "neutral": "😐", "sad": "😔",
@@ -43,10 +42,10 @@ def main():
             st.success("Prediction")
             emoji_icon = emotions_emoji_dict[prediction]
             st.write("{}:{}".format(prediction, emoji_icon))
-            st.write("Confidence:{}".format(np.max(probability)))
+            st.write("Confidence: {}".format(np.max(probability)))
 
         with col2:
-            st.success("Prediction Probability")
+            st.success("Infographic Prediction Probability")
             #st.write(probability)
             proba_df = pd.DataFrame(probability, columns=pipe_lr.classes_)
             #st.write(proba_df.T)
